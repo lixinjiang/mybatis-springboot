@@ -35,4 +35,61 @@ public class UserTest {
 		Page page = new Page(userParam, count, users);
 		System.out.println("page=" + page);
 	}
+
+	@Test
+	public void testUser()  {
+		//增加
+		userm.insert(new UserInfo("aa","13012345678"));
+		//删除
+		int count=userm.delete(29l);
+		UserInfo user = userm.getOne(1l);
+		//修改
+		userm.update(user);
+		//查询
+		List<UserInfo> users = userm.findAllUser();
+	}
+
+	@Test
+	public void testInsert()  {
+		userm.insert(new UserInfo("aa", "a123456"));
+		userm.insert(new UserInfo("bb", "b123456"));
+		userm.insert(new UserInfo("cc", "b123456"));
+
+//		Assert.assertEquals(3, userMapper.getAll().size());
+	}
+
+	@Test
+	public void testQuery() {
+		List<UserInfo> users = userm.findAllUser();
+		if(users==null || users.size()==0){
+			System.out.println("is null");
+		}else{
+			System.out.println("users list is :"+users.toString());
+		}
+	}
+
+
+	@Test
+	public void testUpdate() {
+		long id=1l;
+		UserInfo user = userm.getOne(id);
+		if(user!=null){
+			System.out.println(user.toString());
+			userm.update(user);
+//			Assert.assertTrue(("neo".equals(userMapper.getOne(id).getNickName())));
+		}else {
+			System.out.println("not find user id="+id);
+		}
+	}
+
+
+	@Test
+	public void testDelete() {
+		int count=userm.delete(29l);
+		if(count>0){
+			System.out.println("delete is sucess");
+		}else {
+			System.out.println("delete if failed");
+		}
+	}
 }

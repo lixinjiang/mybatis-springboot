@@ -24,4 +24,10 @@ public interface UserInfoMapper {
 	List<UserInfo> getList(UserParam userParam);
 
 	Integer getCount(UserParam userParam);
+
+	UserInfo getOne(Long id);
+
+	int update(UserInfo userInfo);
+
+	int delete(Long id);
 }

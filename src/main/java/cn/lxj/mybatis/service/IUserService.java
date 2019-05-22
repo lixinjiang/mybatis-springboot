@@ -1,5 +1,9 @@
 package cn.lxj.mybatis.service;
 
+import cn.lxj.mybatis.bean.UserParam;
+import cn.lxj.mybatis.pojo.UserInfo;
+import cn.lxj.mybatis.result.Page;
+
 import java.util.List;
 
 /**
@@ -9,4 +13,15 @@ import java.util.List;
  **/
 public interface IUserService {
 	List findAllUser();
+
+	Page getList(UserParam userParam);
+
+	UserInfo getOne(Long id);
+
+	int save(UserInfo userInfo);
+
+	int updateUser(UserInfo userInfo);
+
+	int delete(Long id);
+
 }
